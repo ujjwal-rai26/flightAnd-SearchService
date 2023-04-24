@@ -1,4 +1,4 @@
-const { City} = require(' ../models/index');
+const { City} = require('../models/index');
 
 class CityRepository{
 
@@ -32,7 +32,7 @@ class CityRepository{
 
     async updateCity(cityId,data){
         try {
-            const city await City.update(data,{
+            const city = await City.update(data,{
               where:{
                 id:cityId
               }
