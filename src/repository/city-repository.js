@@ -35,16 +35,18 @@ class CityRepository{
     async updateCity(cityId,data){
         try {
 
-            const city=await City.update(data,{
-                where:{
-                    id:cityId
-                }
-            })
-         //this will return you updated item
-        //    const city=await City.findByPk(cityId);
-        //    city.name=data.name;
-        //    await city.save();
-        //    return city;
+            //its will update but wont return you the item
+            // const city=await City.update(data,{
+            //     where:{
+            //         id:cityId
+            //     }
+            // })
+
+        // this will return you updated item  //its the 2nd way of updating
+           const city=await City.findByPk(cityId);
+           city.name=data.name;
+           await city.save();
+           return city;
         } 
         catch (error) {
             console.log("something wet wrong in the repository layer");
@@ -69,7 +71,7 @@ class CityRepository{
             const cities =await City.findAll({
                 where:{
                     name:{
-                     [Op.startsWith]:filter.name
+                     [Op.startsWith]:filter.name   //sequelize operators
                     }
                 }
             })
